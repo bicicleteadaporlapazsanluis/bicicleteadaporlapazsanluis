@@ -8,43 +8,61 @@ import { X, Upload } from "lucide-react"
 export function GallerySection() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
 
-  // Galería de fotos del evento - imágenes de ejemplo
+  // Galería de fotos del evento - imágenes locales de la carpeta public/gallery
   const galleryImages = [
     {
       id: 1,
-      src: "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=600&h=400&fit=crop&crop=center",
+      src: "/gallery/1.jpg",
       alt: "Ciclistas en evento anterior",
-      title: "Evento 2023",
+      title: "Evento 2024",
     },
     {
       id: 2,
-      src: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop&crop=center",
+      src: "/gallery/2.jpg",
       alt: "Grupo de participantes",
       title: "Familias participando",
     },
     {
       id: 3,
-      src: "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=600&h=400&fit=crop&crop=center",
+      src: "/gallery/3.jpg",
       alt: "Recorrido del evento",
       title: "Recorrido por la ciudad",
     },
     {
       id: 4,
-      src: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop&crop=center",
+      src: "/gallery/4.jpg",
       alt: "Símbolo de paz y ciclismo",
       title: "Paz y comunidad",
     },
     {
       id: 5,
-      src: "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=600&h=400&fit=crop&crop=center",
+      src: "/gallery/5.jpg",
       alt: "Familias participando",
       title: "Día familiar",
     },
     {
       id: 6,
-      src: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop&crop=center",
+      src: "/gallery/6.jpg",
       alt: "Celebración en la meta",
       title: "Llegada a la meta",
+    },
+    {
+      id: 7,
+      src: "/gallery/7.jpg",
+      alt: "Momento especial del evento",
+      title: "Momento especial",
+    },
+    {
+      id: 8,
+      src: "/gallery/8.jpg",
+      alt: "Comunidad unida",
+      title: "Comunidad unida",
+    },
+    {
+      id: 9,
+      src: "/gallery/9.jpg",
+      alt: "Celebración final",
+      title: "Celebración final",
     },
   ]
 

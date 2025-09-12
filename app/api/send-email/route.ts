@@ -46,7 +46,7 @@ export async function POST(request: NextRequest) {
         <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
           <div style="background: linear-gradient(135deg, #10b981, #3b82f6); padding: 30px; border-radius: 10px; text-align: center; margin-bottom: 30px;">
             <h1 style="color: white; margin: 0; font-size: 28px;">🚴‍♀️ Bicicleteada por la Paz</h1>
-            <p style="color: white; margin: 10px 0 0 0; font-size: 18px;">San Luis 2024</p>
+            <p style="color: white; margin: 10px 0 0 0; font-size: 18px;">San Luis 2025</p>
           </div>
           
           <div style="background: #f8fafc; padding: 25px; border-radius: 8px; margin-bottom: 25px;">
@@ -59,7 +59,7 @@ export async function POST(request: NextRequest) {
             <div style="background: white; padding: 20px; border-radius: 6px; border-left: 4px solid #10b981;">
               <h3 style="color: #059669; margin-top: 0;">📅 Detalles del Evento</h3>
               <ul style="list-style: none; padding: 0;">
-                <li style="margin: 8px 0;"><strong>📅 Fecha:</strong> Domingo 5 de octubre de 2024</li>
+                <li style="margin: 8px 0;"><strong>📅 Fecha:</strong> Domingo 5 de octubre de 2025</li>
                 <li style="margin: 8px 0;"><strong>🕘 Hora:</strong> 9:00 hs (llegar 15 min antes)</li>
                 <li style="margin: 8px 0;"><strong>📍 Partida:</strong> Terrazas del Portezuelo, San Luis</li>
                 <li style="margin: 8px 0;"><strong>🏁 Llegada:</strong> Polideportivo Ave Fénix</li>
@@ -137,7 +137,7 @@ export async function POST(request: NextRequest) {
           <div style="border-top: 1px solid #e5e7eb; padding-top: 20px; text-align: center; color: #6b7280; font-size: 14px;">
             <p><strong>¡Gracias por ser parte de este evento especial!</strong></p>
             <p>Este correo fue enviado automáticamente. No respondas a este mensaje.</p>
-            <p>© 2024 Bicicleteada por la Paz - San Luis, Argentina</p>
+            <p>© 2025 Bicicleteada por la Paz - San Luis, Argentina</p>
             <p>Desarrollado por <strong>deadlinestudiosm</strong></p>
           </div>
         </body>

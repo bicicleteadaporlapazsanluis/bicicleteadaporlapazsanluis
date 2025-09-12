@@ -7,14 +7,14 @@ import { Menu, X, Bike } from "lucide-react";
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
-  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       const sections = ["inicio", "acerca", "recorrido", "galeria", "inscripcion", "sorteo"];
       const scrollPosition = window.scrollY + 100;
 
-      setIsScrolled(window.scrollY > window.innerHeight * 0.8);
+      // Cerrar menú móvil al hacer scroll
+      setIsOpen(false);
 
       for (const section of sections) {
         const element = document.getElementById(section);
@@ -50,18 +50,12 @@ export function Navbar() {
   ];
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-white/95 backdrop-blur-sm border-b border-green-100 shadow-sm translate-y-0"
-          : "-translate-y-full"
-      }`}
-    >
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-green-100 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-2">
             <Bike className="h-8 w-8 text-green-600" />
-            <span className="text-lg font-bold text-green-800 hidden sm:block">Bicicleteada por la Paz</span>
+            <span className="text-lg font-bold text-green-800">Bicicleteada por la Paz</span>
           </div>
 
           {/* Desktop Navigation */}

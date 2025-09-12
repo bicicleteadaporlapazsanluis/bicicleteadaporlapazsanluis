@@ -56,7 +56,7 @@ export function Footer() {
               <footer className="text-sm text-green-300 mt-2">- Mahatma Gandhi</footer>
             </blockquote>
             <p className="text-green-300 text-sm">
-              © 2024 Bicicleteada por la Paz - San Luis, Argentina. Todos los derechos reservados.
+              © 2025 Bicicleteada por la Paz - San Luis, Argentina. Todos los derechos reservados.
             </p>
             <p className="text-green-400 text-xs mt-2">
               Desarrollado por <span className="font-semibold">deadlinestudiosm</span>

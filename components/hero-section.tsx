@@ -2,13 +2,12 @@
 
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { Bike, Users, Heart, Calendar, MapPin, Menu, X } from "lucide-react"
+import { Bike, Users, Heart, Calendar, MapPin } from "lucide-react"
 import { createClient } from "@/lib/client"
 
 export function HeroSection() {
   const [participantCount, setParticipantCount] = useState(0)
   const [isLoading, setIsLoading] = useState(true)
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   useEffect(() => {
     const fetchParticipantCount = async () => {
@@ -41,79 +40,14 @@ export function HeroSection() {
     if (element) {
       element.scrollIntoView({ behavior: "smooth" })
     }
-    setIsMenuOpen(false)
   }
 
-  const navItems = [
-    { id: "acerca", label: "Acerca" },
-    { id: "recorrido", label: "Recorrido" },
-    { id: "galeria", label: "Galería" },
-    { id: "inscripcion", label: "Inscripción" },
-    { id: "sorteo", label: "Sorteo" },
-  ]
 
   return (
     <section
       id="inicio"
       className="relative min-h-screen flex flex-col overflow-hidden bg-gradient-to-br from-green-50 via-blue-50 to-green-100"
     >
-      <nav className="relative z-50 w-full">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16 pt-4">
-            <div className="flex items-center space-x-2">
-              <Bike className="h-8 w-8 text-green-600" />
-            </div>
-
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
-              {navItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className="text-sm font-medium transition-colors hover:text-green-600 text-gray-700 hover:bg-white/20 px-3 py-2 rounded-lg"
-                >
-                  {item.label}
-                </button>
-              ))}
-            </div>
-
-            {/* Mobile menu button */}
-            <div className="md:hidden">
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-gray-700 hover:bg-white/20"
-              >
-                {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-              </Button>
-            </div>
-          </div>
-
-          {/* Mobile Navigation */}
-          {isMenuOpen && (
-            <div className="md:hidden">
-              <div className="px-2 pt-2 pb-3 space-y-1 bg-white/90 backdrop-blur-sm rounded-lg mt-2 border border-green-100">
-                <div className="px-3 py-2 border-b border-green-200 mb-2">
-                  <div className="flex items-center space-x-2">
-                    <Bike className="h-6 w-6 text-green-600" />
-                    <span className="text-lg font-bold text-green-800">Bicicleteada por la Paz</span>
-                  </div>
-                </div>
-                {navItems.map((item) => (
-                  <button
-                    key={item.id}
-                    onClick={() => scrollToSection(item.id)}
-                    className="block w-full text-left px-3 py-2 text-base font-medium transition-colors hover:text-green-600 hover:bg-green-50 rounded-md text-gray-700"
-                  >
-                    {item.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
-        </div>
-      </nav>
 
       <div className="flex-1 flex items-center justify-center">
         <div className="absolute inset-0 opacity-20">
@@ -140,7 +74,7 @@ export function HeroSection() {
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-green-800 mb-4 drop-shadow-lg">
                 Bicicleteada por la Paz
               </h1>
-              <p className="text-xl sm:text-2xl md:text-3xl text-gray-700 font-medium mb-2">San Luis 2024</p>
+              <p className="text-xl sm:text-2xl md:text-3xl text-gray-700 font-medium mb-2">San Luis 2025</p>
               <div className="w-24 h-1 bg-gradient-to-r from-green-500 to-blue-500 mx-auto rounded-full"></div>
             </div>
 

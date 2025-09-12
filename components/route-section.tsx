@@ -1,5 +1,5 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { MapPin, Route } from "lucide-react"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { MapPin, Route } from "lucide-react";
 
 export function RouteSection() {
   const routePoints = [
@@ -11,7 +11,7 @@ export function RouteSection() {
     { name: "Ciudad del Rosario", description: "Barrio histórico" },
     { name: "Avenida del Fundador", description: "Avenida principal" },
     { name: "Polideportivo Ave Fénix", description: "Punto de llegada", isEnd: true },
-  ]
+  ];
 
   return (
     <section className="py-20">
@@ -34,13 +34,15 @@ export function RouteSection() {
                 <div className="space-y-4">
                   {routePoints.map((point, index) => (
                     <div key={index} className="flex items-start gap-3">
-                      <div className={`rounded-full w-8 h-8 flex items-center justify-center text-sm font-semibold ${
-                        point.isStart 
-                          ? "bg-green-500 text-white" 
-                          : point.isEnd 
-                          ? "bg-red-500 text-white" 
-                          : "bg-primary text-primary-foreground"
-                      }`}>
+                      <div
+                        className={`rounded-full w-8 h-8 flex items-center justify-center text-sm font-semibold ${
+                          point.isStart
+                            ? "bg-green-500 text-white"
+                            : point.isEnd
+                            ? "bg-red-500 text-white"
+                            : "bg-primary text-primary-foreground"
+                        }`}
+                      >
                         {point.isStart ? "🚀" : point.isEnd ? "🏁" : index + 1}
                       </div>
                       <div className="flex-1">
@@ -53,7 +55,7 @@ export function RouteSection() {
                     </div>
                   ))}
                 </div>
-                
+
                 <div className="mt-6 p-4 bg-green-50 rounded-lg border border-green-200">
                   <div className="flex items-center gap-2 text-green-700 font-semibold mb-2">
                     <Route className="w-5 h-5" />
@@ -87,15 +89,11 @@ export function RouteSection() {
               <CardContent>
                 <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!4m18!4m17!1m5!1m1!1s0x95d43c2f5a73d1bf:0x7717856453193156!2m2!1d-66.2947326!2d-33.3040249!1m5!1m1!1s0x95d43e08914289a7:0x9c6ec42e2ffb7512!2m2!1d-66.2496757!2d-33.2848276!3e1!6m3!1i0!2i0!3i6"
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen
+                    src="https://www.google.com/maps/embed?pb=!1m24!1m8!1m3!1d26678.629354742654!2d-66.2908144!3d-33.297145!3m2!1i1024!2i768!4f13.1!4m13!3e1!4m5!1s0x95d43c2f5a73d1bf%3A0x7717856453193156!2sTerrazas%20del%20Portezuelo%2C%20Autopista%20de%20las%20Serran%C3%ADas%20Puntanas%2C%20Km%20783%2C%20D5700%20San%20Luis!3m2!1d-33.3040249!2d-66.2947326!4m5!1s0x95d43e08914289a7%3A0x9c6ec42e2ffb7512!2sPolideportivo%20Ave%20F%C3%A9nix%2C%20Avenida%20del%20Viento%20Chorrillero%2C%20San%20Luis!3m2!1d-33.2848276!2d-66.2496757!5e0!3m2!1ses-419!2sar!4v1757640717378!5m2!1ses-419!2sar"
+                    width="600"
+                    height="450"
                     loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    className="rounded-lg"
-                  />
+                  ></iframe>
                 </div>
                 <div className="mt-4 text-center">
                   <a
@@ -114,5 +112,5 @@ export function RouteSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
