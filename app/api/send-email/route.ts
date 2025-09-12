@@ -119,26 +119,11 @@ export async function POST(request: NextRequest) {
             </div>
           </div>
           
-          <div style="background: #f8fafc; padding: 20px; border-radius: 8px; margin: 30px 0; text-align: center;">
-            <h3 style="color: #1f2937; margin-top: 0;">📞 Contacto y Redes</h3>
-            <p style="color: #4b5563; margin-bottom: 15px;">
-              ¿Tienes preguntas? ¡Contáctanos!
-            </p>
-            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-              <a href="mailto:info@bicicleteadaporlapazsanluis.com" style="color: #3b82f6; text-decoration: none; font-weight: bold;">
-                📧 info@bicicleteadaporlapazsanluis.com
-              </a>
-              <a href="https://bicicleteadaporlapazsanluis.com" style="color: #3b82f6; text-decoration: none; font-weight: bold;">
-                🌐 bicicleteadaporlapazsanluis.com
-              </a>
-            </div>
-          </div>
-          
           <div style="border-top: 1px solid #e5e7eb; padding-top: 20px; text-align: center; color: #6b7280; font-size: 14px;">
             <p><strong>¡Gracias por ser parte de este evento especial!</strong></p>
             <p>Este correo fue enviado automáticamente. No respondas a este mensaje.</p>
             <p>© 2025 Bicicleteada por la Paz - San Luis, Argentina</p>
-            <p>Desarrollado por <strong>deadlinestudiosm</strong></p>
+            <p>Desarrollado por <strong>Deadline Studios</strong></p>
           </div>
         </body>
         </html>
