@@ -59,7 +59,7 @@ export function Footer() {
               © 2025 Bicicleteada por la Paz - San Luis, Argentina. Todos los derechos reservados.
             </p>
             <p className="text-green-400 text-xs mt-2">
-              Desarrollado por <span className="font-semibold">deadlinestudiosm</span>
+              Desarrollado por <span className="font-semibold">Deadline Studios</span>
             </p>
           </div>
         </div>

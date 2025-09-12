@@ -90,13 +90,6 @@ export function GallerySection() {
                   className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
-                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="bg-white/90 backdrop-blur-sm rounded-full p-3">
-                      <Upload className="w-6 h-6 text-gray-700" />
-                    </div>
-                  </div>
-                </div>
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
                   <h3 className="text-white font-semibold text-sm">{image.title}</h3>
                 </div>
@@ -104,36 +97,6 @@ export function GallerySection() {
             </Card>
           ))}
         </div>
-
-        <div className="text-center">
-          <p className="text-sm text-muted-foreground">
-            Haz clic en cualquier imagen para verla en tamaño completo
-          </p>
-        </div>
-
-        {/* Modal for enlarged image */}
-        {selectedImage && (
-          <div
-            className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4"
-            onClick={() => setSelectedImage(null)}
-          >
-            <div className="relative max-w-4xl max-h-full">
-              <Button
-                variant="ghost"
-                size="icon"
-                className="absolute -top-12 right-0 text-white hover:bg-white/20"
-                onClick={() => setSelectedImage(null)}
-              >
-                <X className="w-6 h-6" />
-              </Button>
-              <img
-                src={selectedImage || "/placeholder.svg"}
-                alt="Imagen ampliada"
-                className="max-w-full max-h-full object-contain rounded-lg"
-              />
-            </div>
-          </div>
-        )}
       </div>
     </section>
   )
