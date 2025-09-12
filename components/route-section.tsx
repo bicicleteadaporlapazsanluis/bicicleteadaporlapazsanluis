@@ -14,15 +14,15 @@ export function RouteSection() {
   ];
 
   return (
-    <section className="py-20">
+    <section className="py-12 lg:py-20">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-primary mb-4">Recorrido</h2>
-            <p className="text-lg text-muted-foreground">Conocé el trayecto que recorreremos juntos por San Luis</p>
+          <div className="text-center mb-8 lg:mb-12">
+            <h2 className="text-3xl lg:text-4xl font-bold text-primary mb-4">Recorrido</h2>
+            <p className="text-base lg:text-lg text-muted-foreground">Conocé el trayecto que recorreremos juntos por San Luis</p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
             <Card className="border-border bg-card/80 backdrop-blur-sm">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-primary">
@@ -87,12 +87,14 @@ export function RouteSection() {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
+                <div className="aspect-video bg-muted rounded-lg overflow-hidden">
                   <iframe
                     src="https://www.google.com/maps/embed?pb=!1m24!1m8!1m3!1d26678.629354742654!2d-66.2908144!3d-33.297145!3m2!1i1024!2i768!4f13.1!4m13!3e1!4m5!1s0x95d43c2f5a73d1bf%3A0x7717856453193156!2sTerrazas%20del%20Portezuelo%2C%20Autopista%20de%20las%20Serran%C3%ADas%20Puntanas%2C%20Km%20783%2C%20D5700%20San%20Luis!3m2!1d-33.3040249!2d-66.2947326!4m5!1s0x95d43e08914289a7%3A0x9c6ec42e2ffb7512!2sPolideportivo%20Ave%20F%C3%A9nix%2C%20Avenida%20del%20Viento%20Chorrillero%2C%20San%20Luis!3m2!1d-33.2848276!2d-66.2496757!5e0!3m2!1ses-419!2sar!4v1757640717378!5m2!1ses-419!2sar"
-                    width="600"
-                    height="450"
+                    width="100%"
+                    height="100%"
                     loading="lazy"
+                    className="w-full h-full border-0"
+                    allowFullScreen
                   ></iframe>
                 </div>
                 <div className="mt-4 text-center">

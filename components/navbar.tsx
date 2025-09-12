@@ -52,6 +52,7 @@ export function Navbar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-green-100 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Main navbar container */}
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-2">
             <Bike className="h-8 w-8 text-green-600" />
@@ -81,10 +82,10 @@ export function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Navigation - positioned absolutely to not affect navbar height */}
         {isOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-green-100">
+          <div className="md:hidden absolute top-16 left-0 right-0 bg-white border-t border-green-100 shadow-lg">
+            <div className="px-4 py-2 space-y-1">
               {navItems.map((item) => (
                 <button
                   key={item.id}
