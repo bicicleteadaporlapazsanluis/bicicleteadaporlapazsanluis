@@ -7,6 +7,7 @@ import { Toaster } from "@/components/ui/toaster"
 import { Suspense } from "react"
 import { ToastProvider } from "@/components/ui/toast"
 import "./globals.css"
+import "./swiper.css"
 
 export const metadata: Metadata = {
   title: "Bicicleteada por la Paz - San Luis, Argentina",

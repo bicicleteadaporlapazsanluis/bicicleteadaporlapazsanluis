@@ -1,13 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Autoplay, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
 export function ImageSlider() {
@@ -68,37 +66,7 @@ export function ImageSlider() {
     },
   ];
 
-  const [currentIndex, setCurrentIndex] = useState(0);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [isPaused, setIsPaused] = useState(false);
-
-  // Auto-play functionality
-  useEffect(() => {
-    if (!isPaused) {
-      const interval = setInterval(() => {
-        setCurrentIndex((prev) => (prev + 1) % images.length);
-      }, 2000); // Change slide every 4 seconds
-
-      return () => clearInterval(interval);
-    }
-  }, [isPaused]);
-
-  // const nextSlide = () => {
-  //   setCurrentIndex((prev) => (prev + 1) % images.length);
-  // };
-
-  // const prevSlide = () => {
-  //   setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
-  // };
-
-  const visibleImages = 2;
-  const startIndex = currentIndex;
-  const displayImages = [];
-
-  for (let i = 0; i < visibleImages; i++) {
-    const index = (startIndex + i) % images.length;
-    displayImages.push(images[index]);
-  }
   const swiperOptions = {
     modules: [Autoplay, Navigation],
     slidesPerView: 2,
@@ -112,26 +80,10 @@ export function ImageSlider() {
     breakpoints: {
       320: {
         slidesPerView: 1,
-        spaceBetween: 30,
+        spaceBetween: 20,
       },
-      575: {
+      640: {
         slidesPerView: 2,
-        spaceBetween: 30,
-      },
-      767: {
-        slidesPerView: 2,
-        spaceBetween: 30,
-      },
-      991: {
-        slidesPerView: 2,
-        spaceBetween: 30,
-      },
-      1199: {
-        slidesPerView: 3,
-        spaceBetween: 30,
-      },
-      1350: {
-        slidesPerView: 3,
         spaceBetween: 30,
       },
     },
@@ -139,39 +91,40 @@ export function ImageSlider() {
 
   return (
     <section className="py-20">
-      <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
-          <div className="flex items-center justify-center space-x-6">
-            <div className="flex space-x-6 overflow-hidden">
-              <Swiper {...swiperOptions} className="swiper">
-                {images.map((image, index) => (
-                  <SwiperSlide key={image.id} className="swiper-slide">
-                    <div
-                      key={`${image.id}-${startIndex}-${index}`}
-                      className="relative group cursor-pointer flex-shrink-0"
-                      onMouseEnter={() => setHoveredIndex(index)}
-                      onMouseLeave={() => setHoveredIndex(null)}
-                    >
-                      <div className="relative overflow-hidden rounded-lg shadow-lg">
-                        <img src={image.src || "/placeholder.svg"} alt={image.title} width={800} height={800} />
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-0">
+        <div className="relative">
+          <Swiper {...swiperOptions} className="swiper">
+            {images.map((image, index) => (
+              <SwiperSlide key={image.id} className="swiper-slide">
+                <div
+                  className="relative group cursor-pointer"
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                >
+                  <div className="relative overflow-hidden rounded-lg shadow-lg">
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      width={800}
+                      height={800}
+                      className="w-full h-80 object-cover"
+                    />
 
-                        {/* Overlay */}
-                        <div
-                          className={`absolute inset-0 bg-gradient-to-b from-transparent to-black flex items-center justify-center p-6 transition-opacity duration-300 ${
-                            hoveredIndex === index ? "opacity-100" : "opacity-0"
-                          }`}
-                        >
-                          <div className="text-center text-white">
-                            <h3 className="text-xl font-bold mb-2">{image.title}</h3>
-                          </div>
-                        </div>
+                    {/* Overlay */}
+                    <div
+                      className={`absolute inset-0 bg-gradient-to-b from-transparent to-black flex items-center justify-center p-6 transition-opacity duration-300 ${
+                        hoveredIndex === index ? "opacity-100" : "opacity-0"
+                      }`}
+                    >
+                      <div className="text-center text-white">
+                        <h3 className="text-xl font-bold mb-2">{image.title}</h3>
                       </div>
                     </div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            </div>
-          </div>
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </div>
     </section>

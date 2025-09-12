@@ -4,6 +4,7 @@ import { useState } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { X, Upload } from "lucide-react"
+import { SwiperGallery } from "@/components/swiper"
 
 export function GallerySection() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
@@ -66,8 +67,10 @@ export function GallerySection() {
     },
   ]
 
+  const galleryImagesArray = galleryImages.map(img => img.src)
+
   return (
-    <section className="py-16">
+    <section id="galeria" className="py-16">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">Galería de Fotos</h2>
@@ -76,26 +79,21 @@ export function GallerySection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-          {galleryImages.map((image) => (
-            <Card
-              key={image.id}
-              className="overflow-hidden cursor-pointer hover:shadow-lg transition-all duration-300 bg-card/80 backdrop-blur-sm group"
-              onClick={() => setSelectedImage(image.src)}
-            >
-              <div className="relative">
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
-                  loading="lazy"
-                />
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
-                  <h3 className="text-white font-semibold text-sm">{image.title}</h3>
-                </div>
-              </div>
-            </Card>
-          ))}
+        <div className="mb-8">
+          <SwiperGallery images={galleryImagesArray} />
+        </div>
+
+        <div className="text-center">
+          <Button 
+            variant="outline" 
+            className="bg-white/90 backdrop-blur-sm hover:bg-green-50 border-green-200 text-green-700 hover:text-green-800"
+          >
+            <Upload className="w-4 h-4 mr-2" />
+            Subir tus fotos
+          </Button>
+          <p className="text-sm text-muted-foreground mt-2">
+            Próximamente podrás subir tus propias fotos del evento
+          </p>
         </div>
       </div>
     </section>

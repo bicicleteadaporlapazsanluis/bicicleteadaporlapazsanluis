@@ -25,7 +25,6 @@ export default function Home() {
         </section>
         <section id="galeria">
           <ImageSlider />
-          {/* <GallerySection /> */}
         </section>
         <section id="sorteo">
           <RaffleSection />
