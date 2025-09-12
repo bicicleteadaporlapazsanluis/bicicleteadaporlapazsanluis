@@ -29,7 +29,7 @@ export function FadeIn({
 
   return (
     <motion.div
-      ref={ref}
+      ref={ref as React.RefObject<HTMLDivElement>}
       initial={directionVariants[direction]}
       animate={isVisible ? { x: 0, y: 0, opacity: 1 } : directionVariants[direction]}
       transition={{
