@@ -5,7 +5,18 @@ const resend = new Resend(process.env.RESEND_API_KEY || 'dummy-key')
 
 export async function POST(request: NextRequest) {
   try {
-    const { email, nombre, apellido } = await request.json()
+    let body;
+    try {
+      body = await request.json()
+    } catch (parseError) {
+      console.error('Error parsing JSON:', parseError)
+      return NextResponse.json(
+        { error: 'Invalid JSON format' },
+        { status: 400 }
+      )
+    }
+
+    const { email, nombre, apellido } = body
 
     if (!email || !nombre || !apellido) {
       return NextResponse.json(
