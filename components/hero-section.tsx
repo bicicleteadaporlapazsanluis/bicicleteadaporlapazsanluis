@@ -50,7 +50,7 @@ export function HeroSection() {
       id="inicio"
       className="relative min-h-screen flex flex-col overflow-hidden bg-gradient-to-br from-green-50 via-blue-50 to-green-100"
     >
-      <div className="flex-1 flex items-center justify-center">
+      <div className="flex-1 flex items-center justify-center pt-24 md:py-20 lg:py-32">
         <div className="absolute inset-0 opacity-20">
           <motion.div
             className="absolute top-20 left-4 md:left-10"
@@ -128,10 +128,10 @@ export function HeroSection() {
           </motion.div>
         </div>
 
-        <div className="container mx-auto px-4 text-center relative z-10">
-          <div className="max-w-4xl mx-auto">
+        <div className="container mx-auto px-4 text-center relative z-10 w-full">
+          <div className="max-w-4xl mx-auto space-y-12 md:space-y-12">
             <FadeIn delay={0.2} direction="up">
-              <div className="mb-12">
+              <div className="mb-8 md:mb-12">
                 <motion.h1
                   className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-green-800 mb-4 drop-shadow-lg"
                   initial={{ scale: 0.8, opacity: 0 }}
@@ -158,7 +158,7 @@ export function HeroSection() {
             </FadeIn>
 
             <FadeIn delay={0.6} direction="up">
-              <div className="mb-8">
+              <div className="mb-6 md:mb-8">
                 <motion.div
                   className="inline-flex items-center gap-2 bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-medium mb-6"
                   whileHover={{ scale: 1.05 }}
@@ -213,11 +213,11 @@ export function HeroSection() {
 
             <FadeIn delay={1} direction="up">
               <motion.div
-                className="bg-white/90 backdrop-blur-sm rounded-xl p-4 md:p-8 mb-8 inline-block border border-green-200 shadow-xl"
+                className="bg-white/90 backdrop-blur-sm rounded-xl p-4 md:p-8 mb-6 md:mb-8 inline-block border border-green-200 shadow-xl"
                 whileHover={{ scale: 1.02, y: -5 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 text-green-700">
+                <div className="flex flex-row items-center justify-center gap-2 sm:gap-3 text-green-700">
                   <motion.div animate={{ rotate: [0, 10, -10, 0] }} transition={{ duration: 3, repeat: Infinity }}>
                     <Users className="w-6 h-6 md:w-8 md:h-8" />
                   </motion.div>
@@ -235,9 +235,6 @@ export function HeroSection() {
                   </span>
                 </div>
               </motion.div>
-            </FadeIn>
-
-            <FadeIn delay={1.2} direction="up">
               <div className="flex justify-center">
                 <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.95 }}>
                   <Button
