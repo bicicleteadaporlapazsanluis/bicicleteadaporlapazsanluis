@@ -15,6 +15,8 @@ import { registrationSchema, type RegistrationFormData } from "@/lib/validations
 export function RegistrationSection() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [dniError, setDniError] = useState<string | null>(null);
+  const [isCheckingDni, setIsCheckingDni] = useState(false);
   const { addToast } = useToast();
 
   const {
@@ -51,26 +53,103 @@ export function RegistrationSection() {
 
   const phoneValue = watch("telefono");
 
+  // Función para verificar si el DNI ya existe
+  const checkDniExists = async (dni: string) => {
+    if (!dni || dni.length < 6) {
+      setDniError(null);
+      return;
+    }
+
+    setIsCheckingDni(true);
+    try {
+      const supabase = createClient();
+      const { data: existingDni, error } = await supabase
+        .from("registrations")
+        .select("dni_pasaporte")
+        .eq("dni_pasaporte", dni)
+        .single();
+
+      if (error && error.code !== "PGRST116") {
+        throw error;
+      }
+
+      if (existingDni) {
+        setDniError("Ya existe una inscripción con este DNI. Cada persona solo puede inscribirse una vez.");
+      } else {
+        setDniError(null);
+      }
+    } catch (error) {
+      console.error("Error verificando DNI:", error);
+      setDniError(null);
+    } finally {
+      setIsCheckingDni(false);
+    }
+  };
+
+  // Función para manejar el cambio en el campo DNI
+  const handleDniChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const dni = e.target.value;
+    setValue("dni_pasaporte", dni);
+    
+    // Debounce para evitar muchas consultas
+    const timeoutId = setTimeout(() => {
+      checkDniExists(dni);
+    }, 500);
+
+    return () => clearTimeout(timeoutId);
+  };
+
   const onSubmit = async (data: RegistrationFormData) => {
     setIsLoading(true);
 
     try {
       const supabase = createClient();
 
+      // Verificar si el DNI ya existe
+      const { data: existingDni, error: dniError } = await supabase
+        .from("registrations")
+        .select("dni_pasaporte")
+        .eq("dni_pasaporte", data.dni_pasaporte)
+        .single();
+
+      if (dniError && dniError.code !== "PGRST116") {
+        // PGRST116 es "not found", que es lo que queremos
+        throw dniError;
+      }
+
+      if (existingDni) {
+        addToast({
+          title: "Error",
+          description: "Ya existe una inscripción con este DNI. Cada persona solo puede inscribirse una vez.",
+          variant: "error",
+        });
+        return;
+      }
+
+      // Verificar si el email ya existe
+      const { data: existingEmail, error: emailError } = await supabase
+        .from("registrations")
+        .select("email")
+        .eq("email", data.email)
+        .single();
+
+      if (emailError && emailError.code !== "PGRST116") {
+        throw emailError;
+      }
+
+      if (existingEmail) {
+        addToast({
+          title: "Error",
+          description: "Ya existe una inscripción con este email. Por favor usa otro email.",
+          variant: "error",
+        });
+        return;
+      }
+
       const { data: result, error } = await supabase.from("registrations").insert([data]).select();
 
       if (error) {
-        if (error.code === "23505") {
-          // Unique constraint violation
-          addToast({
-            title: "Error",
-            description: "Este email ya está registrado. Por favor usa otro email.",
-            variant: "error",
-          });
-        } else {
-          throw error;
-        }
-        return;
+        throw error;
       }
 
       // Enviar correo de confirmación
@@ -255,25 +334,25 @@ export function RegistrationSection() {
             {/* Formulario */}
             <div className="lg:col-span-2">
               <Card className="border-2 border-green-200 bg-white/90 backdrop-blur-sm">
-                <CardHeader className="bg-gradient-to-r from-green-500 to-blue-500 text-white rounded-t-lg">
-                  <CardTitle className="flex items-center gap-3 text-2xl">
+                <CardHeader className="bg-gradient-to-r from-green-500 to-blue-500 text-white rounded-t-lg p-6">
+                  <CardTitle className="flex items-center gap-3 text-2xl mb-2">
                     <div className="p-2 bg-white/20 rounded-lg">
                       <UserPlus className="w-6 h-6" />
                     </div>
                     Formulario de Inscripción
                   </CardTitle>
-                  <p className="text-green-100 mt-2">Completá todos los campos para inscribirte</p>
+                  <p className="text-green-100 text-sm">Completá todos los campos para inscribirte</p>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="p-6">
                   <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      <div className="space-y-2 pt-4">
-                        <Label htmlFor="nombre">Nombre *</Label>
+                      <div className="space-y-2">
+                        <Label htmlFor="nombre" className="text-sm font-medium text-gray-700">Nombre *</Label>
                         <Input
                           id="nombre"
                           placeholder="Tu nombre"
                           {...register("nombre")}
-                          className={`${
+                          className={`h-11 ${
                             errors.nombre
                               ? "border-red-500 focus:border-red-500 focus:ring-red-500"
                               : "focus:border-green-500 focus:ring-green-500"
@@ -287,12 +366,12 @@ export function RegistrationSection() {
                         )}
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="apellido">Apellido *</Label>
+                        <Label htmlFor="apellido" className="text-sm font-medium text-gray-700">Apellido *</Label>
                         <Input
                           id="apellido"
                           placeholder="Tu apellido"
                           {...register("apellido")}
-                          className={`${
+                          className={`h-11 ${
                             errors.apellido
                               ? "border-red-500 focus:border-red-500 focus:ring-red-500"
                               : "focus:border-green-500 focus:ring-green-500"
@@ -308,13 +387,13 @@ export function RegistrationSection() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="email">Correo electrónico *</Label>
+                      <Label htmlFor="email" className="text-sm font-medium text-gray-700">Correo electrónico *</Label>
                       <Input
                         id="email"
                         type="email"
                         placeholder="tu@email.com"
                         {...register("email")}
-                        className={`${
+                        className={`h-11 ${
                           errors.email
                             ? "border-red-500 focus:border-red-500 focus:ring-red-500"
                             : "focus:border-green-500 focus:ring-green-500"
@@ -330,32 +409,42 @@ export function RegistrationSection() {
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <Label htmlFor="dni_pasaporte">DNI / Pasaporte *</Label>
-                        <Input
-                          id="dni_pasaporte"
-                          placeholder="12345678"
-                          {...register("dni_pasaporte")}
-                          className={`${
-                            errors.dni_pasaporte
-                              ? "border-red-500 focus:border-red-500 focus:ring-red-500"
-                              : "focus:border-green-500 focus:ring-green-500"
-                          }`}
-                        />
-                        {errors.dni_pasaporte && (
+                        <Label htmlFor="dni_pasaporte" className="text-sm font-medium text-gray-700">DNI / Pasaporte *</Label>
+                        <div className="relative">
+                          <Input
+                            id="dni_pasaporte"
+                            placeholder="12345678"
+                            {...register("dni_pasaporte")}
+                            onChange={handleDniChange}
+                            className={`h-11 ${
+                              errors.dni_pasaporte || dniError
+                                ? "border-red-500 focus:border-red-500 focus:ring-red-500"
+                                : "focus:border-green-500 focus:ring-green-500"
+                            }`}
+                          />
+                          {isCheckingDni && (
+                            <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+                              <div className="w-4 h-4 border-2 border-green-500 border-t-transparent rounded-full animate-spin"></div>
+                            </div>
+                          )}
+                        </div>
+                        {(errors.dni_pasaporte || dniError) && (
                           <div className="flex items-center gap-1 mt-1">
                             <div className="w-1 h-1 bg-red-500 rounded-full"></div>
-                            <p className="text-sm text-red-500">{errors.dni_pasaporte.message}</p>
+                            <p className="text-sm text-red-500">
+                              {dniError || errors.dni_pasaporte?.message}
+                            </p>
                           </div>
                         )}
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="telefono">Teléfono *</Label>
+                        <Label htmlFor="telefono" className="text-sm font-medium text-gray-700">Teléfono *</Label>
                         <Input
                           id="telefono"
                           placeholder="012 3456 789"
                           value={phoneValue || ""}
                           onChange={handlePhoneChange}
-                          className={`${
+                          className={`h-11 ${
                             errors.telefono
                               ? "border-red-500 focus:border-red-500 focus:ring-red-500"
                               : "focus:border-green-500 focus:ring-green-500"
@@ -371,12 +460,12 @@ export function RegistrationSection() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="ciudad">Ciudad *</Label>
+                      <Label htmlFor="ciudad" className="text-sm font-medium text-gray-700">Ciudad *</Label>
                       <Input
                         id="ciudad"
                         placeholder="Tu ciudad"
                         {...register("ciudad")}
-                        className={`${
+                        className={`h-11 ${
                           errors.ciudad
                             ? "border-red-500 focus:border-red-500 focus:ring-red-500"
                             : "focus:border-green-500 focus:ring-green-500"
@@ -391,12 +480,12 @@ export function RegistrationSection() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="organizacion_personal">Agrupación a la que corresponde o si es personal *</Label>
+                      <Label htmlFor="organizacion_personal" className="text-sm font-medium text-gray-700">Agrupación a la que corresponde o si es personal *</Label>
                       <Input
                         id="organizacion_personal"
                         placeholder="Ej: Club de ciclismo, Escuela, Personal, etc."
                         {...register("organizacion_personal")}
-                        className={`${
+                        className={`h-11 ${
                           errors.organizacion_personal
                             ? "border-red-500 focus:border-red-500 focus:ring-red-500"
                             : "focus:border-green-500 focus:ring-green-500"
@@ -413,32 +502,43 @@ export function RegistrationSection() {
                     <div className="pt-6 border-t border-gray-200">
                       <Button
                         type="submit"
-                        className="w-full bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white text-lg py-6 transition-all duration-300 transform hover:scale-105"
+                        className="w-full bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white text-lg py-4 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
                         size="lg"
-                        disabled={isLoading}
+                        disabled={isLoading || !!dniError || isCheckingDni}
                       >
-                        <UserPlus className="w-6 h-6 mr-3" />
-                        {isLoading ? "Inscribiendo..." : "¡Inscribirme a la Bicicleteada!"}
+                        <UserPlus className="w-5 h-5 mr-2" />
+                        {isLoading ? "Inscribiendo..." : isCheckingDni ? "Verificando..." : "¡Inscribirme a la Bicicleteada!"}
                       </Button>
 
-                      <p className="text-center text-sm text-muted-foreground mt-4">
+                      <p className="text-center text-xs text-gray-500 mt-3">
                         Al inscribirte, aceptás recibir información sobre el evento por correo electrónico
                       </p>
                     </div>
 
                     {/* Resumen de validación */}
-                    {Object.keys(errors).length > 0 && (
+                    {(Object.keys(errors).length > 0 || dniError) && (
                       <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg">
-                        <div className="flex items-center gap-2 mb-2">
+                        <div className="flex items-center gap-2 mb-3">
                           <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                          <h4 className="font-semibold text-red-700">Por favor corrige los siguientes errores:</h4>
+                          <h4 className="font-semibold text-red-700 text-sm">Por favor corrige los siguientes errores:</h4>
                         </div>
-                        <ul className="text-sm text-red-600 space-y-1">
+                        <ul className="text-sm text-red-600 space-y-2">
+                          {dniError && (
+                            <li className="flex items-start gap-2">
+                              <span className="w-1 h-1 bg-red-500 rounded-full mt-2 flex-shrink-0"></span>
+                              <div>
+                                <span className="font-medium">DNI:</span>
+                                <span className="ml-1">{dniError}</span>
+                              </div>
+                            </li>
+                          )}
                           {Object.entries(errors).map(([field, error]) => (
-                            <li key={field} className="flex items-center gap-2">
-                              <span className="w-1 h-1 bg-red-500 rounded-full"></span>
-                              <span className="capitalize">{field.replace("_", " ")}:</span>
-                              <span>{error?.message}</span>
+                            <li key={field} className="flex items-start gap-2">
+                              <span className="w-1 h-1 bg-red-500 rounded-full mt-2 flex-shrink-0"></span>
+                              <div>
+                                <span className="font-medium capitalize">{field.replace("_", " ")}:</span>
+                                <span className="ml-1">{error?.message}</span>
+                              </div>
                             </li>
                           ))}
                         </ul>
