@@ -174,7 +174,7 @@ export function RaffleSection() {
         <div className="max-w-4xl mx-auto mb-12">
           <Card className="bg-gradient-to-r from-yellow-50 to-orange-50 border-2 border-yellow-200 shadow-lg">
             <CardContent className="p-8 text-center">
-              <div className="flex items-center justify-center mb-4">
+              <div className="flex flex-col md:flex-row items-center justify-center mb-4">
                 <Gift className="w-12 h-12 text-yellow-600 mr-3" />
                 <h3 className="text-3xl md:text-4xl font-bold text-yellow-700">
                   Gran Cantidad de Premios

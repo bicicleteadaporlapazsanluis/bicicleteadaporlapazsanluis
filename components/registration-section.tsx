@@ -63,13 +63,13 @@ export function RegistrationSection() {
     setIsCheckingDni(true);
     try {
       const supabase = createClient();
-      const { data: existingDni, error } = await supabase
+      const { data: existingDni, error } = await (supabase as any)
         .from("registrations")
         .select("dni_pasaporte")
         .eq("dni_pasaporte", dni)
-        .single();
+        .maybeSingle();
 
-      if (error && error.code !== "PGRST116") {
+      if (error) {
         throw error;
       }
 
@@ -106,14 +106,13 @@ export function RegistrationSection() {
       const supabase = createClient();
 
       // Verificar si el DNI ya existe
-      const { data: existingDni, error: dniError } = await supabase
+      const { data: existingDni, error: dniError } = await (supabase as any)
         .from("registrations")
         .select("dni_pasaporte")
         .eq("dni_pasaporte", data.dni_pasaporte)
-        .single();
+        .maybeSingle();
 
-      if (dniError && dniError.code !== "PGRST116") {
-        // PGRST116 es "not found", que es lo que queremos
+      if (dniError) {
         throw dniError;
       }
 
@@ -127,13 +126,13 @@ export function RegistrationSection() {
       }
 
       // Verificar si el email ya existe
-      const { data: existingEmail, error: emailError } = await supabase
+      const { data: existingEmail, error: emailError } = await (supabase as any)
         .from("registrations")
         .select("email")
         .eq("email", data.email)
-        .single();
+        .maybeSingle();
 
-      if (emailError && emailError.code !== "PGRST116") {
+      if (emailError) {
         throw emailError;
       }
 
@@ -219,7 +218,7 @@ export function RegistrationSection() {
                 </h2>
                 <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
                   Gracias por sumarte a la <span className="font-bold text-green-600">Bicicleteada por la Paz</span>. Te
-                  esperamos el <span className="font-bold text-blue-600">domingo 5 de octubre a las 9:00 hs</span>
+                  esperamos el <span className="font-bold text-blue-600">domingo 5 de octubre a las 9:00 hs</span>{" "}
                   en el Salón Malvinas Argentinas.
                 </p>
                 <div className="bg-green-50 border border-green-200 rounded-lg p-6 max-w-2xl mx-auto">
