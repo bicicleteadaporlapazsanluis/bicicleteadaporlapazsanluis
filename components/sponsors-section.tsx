@@ -1,32 +1,64 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Building, Users, Award, Car } from "lucide-react"
+import Image from "next/image"
+import { Heart } from "lucide-react"
 
 export function SponsorsSection() {
   const sponsors = [
     {
       name: "Gobierno de San Luis",
-      icon: Building,
+      logo: "/logos/sanluisprovincia.png",
       description: "Gobierno Provincial",
     },
     {
-      name: "Rotary Club Sierras San Luis",
-      icon: Users,
-      description: "Organización de servicio",
+      name: "UPF ARGENTINA",
+      logo: "/logos/upf.jpg",
+      description: "Universal Peace Federation",
     },
     {
-      name: "Embajador para la Paz San Luis",
-      icon: Award,
-      description: "Representante de paz",
+      name: "Fernando González Zunino",
+      logo: null,
+      icon: Heart,
+      description: "Embajador para la Paz",
     },
     {
       name: "Automóvil Club",
-      icon: Car,
+      logo: "/logos/servo.jpg",
       description: "Club automotor",
+    },
+    {
+      name: "Triunfo Seguros",
+      logo: "/logos/triunfoseguros.png",
+      description: "Seguros",
+    },
+    {
+      name: "JK",
+      logo: "/logos/jk.jpg",
+      description: "Patrocinador",
+    },
+    {
+      name: "Gorila",
+      logo: "/logos/gorila.png",
+      description: "Patrocinador",
+    },
+    {
+      name: "Fuera de Eje",
+      logo: "/logos/fueradeeje.png",
+      description: "Medios",
+    },
+    {
+      name: "Fox Sports",
+      logo: "/logos/foxsports.png",
+      description: "Medios Deportivos",
+    },
+    {
+      name: "Deadline Studios",
+      logo: "/logos/deadline.png",
+      description: "Producción",
     },
   ]
 
   return (
-    <section className="py-20">
+    <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
@@ -38,11 +70,23 @@ export function SponsorsSection() {
             {sponsors.map((sponsor, index) => (
               <Card
                 key={index}
-                className="text-center border-border bg-card/80 backdrop-blur-sm hover:shadow-lg transition-shadow"
+                className={`text-center border-border backdrop-blur-sm hover:shadow-xl hover:scale-105 transition-all duration-300 hover:-translate-y-2`}
               >
                 <CardHeader className="pb-4">
-                  <div className="bg-primary/10 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                    <sponsor.icon className="w-8 h-8 text-primary" />
+                  <div className={`w-full h-24 flex items-center justify-center mx-auto mb-4 relative rounded-lg`}>
+                    {sponsor.logo ? (
+                      <Image
+                        src={sponsor.logo}
+                        alt={sponsor.name}
+                        width={150}
+                        height={150}
+                        className="object-contain max-w-full max-h-full"
+                      />
+                    ) : sponsor.icon ? (
+                      <div className="bg-gradient-to-br from-red-100 to-pink-100 rounded-full w-20 h-20 flex items-center justify-center shadow-lg">
+                        <sponsor.icon className="w-10 h-10 text-red-500" />
+                      </div>
+                    ) : null}
                   </div>
                   <CardTitle className="text-lg text-primary">{sponsor.name}</CardTitle>
                 </CardHeader>
