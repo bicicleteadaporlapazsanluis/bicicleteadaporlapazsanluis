@@ -21,9 +21,14 @@ export function SponsorsSection() {
       description: "Embajador para la Paz",
     },
     {
-      name: "Automóvil Club",
+      name: "Rotary Club Sierras San Luis",
+      logo: "/logos/rotaryclub.jpg",
+      description: "Organización de servicio",
+    },
+    {
+      name: "SERVO",
       logo: "/logos/servo.jpg",
-      description: "Club automotor",
+      description: "Fábrica de productos anti pinchazos",
     },
     {
       name: "Triunfo Seguros",
