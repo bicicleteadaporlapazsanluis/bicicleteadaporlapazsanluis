@@ -8,6 +8,7 @@ import { SponsorsSection } from "@/components/sponsors-section"
 import { Footer } from "@/components/footer"
 import { Navbar } from "@/components/navbar"
 import { ImageSlider } from "@/components/image-slider"
+import { VideoSection } from "@/components/video-section"
 
 export default function Home() {
   return (
@@ -26,6 +27,7 @@ export default function Home() {
         <section id="galeria">
           <ImageSlider />
         </section>
+        <VideoSection />
         <section id="sorteo">
           <RaffleSection />
         </section>

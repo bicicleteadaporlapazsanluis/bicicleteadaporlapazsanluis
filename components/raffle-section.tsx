@@ -177,7 +177,7 @@ export function RaffleSection() {
               <div className="flex flex-col md:flex-row items-center justify-center mb-4">
                 <Gift className="w-12 h-12 text-yellow-600 mr-3" />
                 <h3 className="text-3xl md:text-4xl font-bold text-yellow-700">
-                  Gran Cantidad de Premios
+                  Grandes Premios
                 </h3>
               </div>
               <p className="text-lg text-yellow-600 font-medium">
