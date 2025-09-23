@@ -60,6 +60,11 @@ export function SponsorsSection() {
       logo: "/logos/deadline.png",
       description: "Producción",
     },
+    {
+      name: "BeHause",
+      logo: "/logos/behause.png",
+      description: "Patrocinador",
+    },
   ]
 
   return (

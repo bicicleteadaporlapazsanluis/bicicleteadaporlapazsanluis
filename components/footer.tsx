@@ -1,4 +1,4 @@
-import { Heart, Facebook, Instagram, Twitter, Mail } from "lucide-react"
+import { Heart, Mail } from "lucide-react"
 
 export function Footer() {
   return (
@@ -17,37 +17,16 @@ export function Footer() {
           </div>
 
 
-          {/* Social Media */}
-          <div className="flex justify-center space-x-6 mb-12">
+          {/* Contact */}
+          {/* <div className="flex justify-center mb-12">
             <a 
-              href="#" 
-              className="bg-white/20 hover:bg-white/30 transition-all duration-300 p-3 rounded-full hover:scale-110"
-              aria-label="Facebook"
-            >
-              <Facebook className="w-6 h-6" />
-            </a>
-            <a 
-              href="#" 
-              className="bg-white/20 hover:bg-white/30 transition-all duration-300 p-3 rounded-full hover:scale-110"
-              aria-label="Instagram"
-            >
-              <Instagram className="w-6 h-6" />
-            </a>
-            <a 
-              href="#" 
-              className="bg-white/20 hover:bg-white/30 transition-all duration-300 p-3 rounded-full hover:scale-110"
-              aria-label="Twitter"
-            >
-              <Twitter className="w-6 h-6" />
-            </a>
-            <a 
-              href="#" 
+              href="mailto:contacto@bicicleteadaporlapaz.com" 
               className="bg-white/20 hover:bg-white/30 transition-all duration-300 p-3 rounded-full hover:scale-110"
               aria-label="Email"
             >
               <Mail className="w-6 h-6" />
             </a>
-          </div>
+          </div> */}
 
           {/* Quote and Copyright */}
           <div className="border-t border-green-600/30 pt-8">
