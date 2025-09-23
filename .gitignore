@@ -7,6 +7,9 @@ SUPABASE_SETUP.md
 deployment.md
 resend_setup.md
 supabase_setup.md
+
+# Ignore all scripts
+scripts/
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
