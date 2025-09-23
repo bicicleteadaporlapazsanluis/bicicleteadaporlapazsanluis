@@ -11,8 +11,6 @@ export function VideoSection() {
           Reviví los mejores momentos de la Bicicleteada por la Paz 2024.
         </p>
         <div className="relative w-full" style={{ paddingTop: "56.25%" }}>
-          {/* para quitar los controles */}
-          {/* si=LHw4VM5FtFayoFAC&amp;controls=0 */}
           <iframe
             className="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg"
             src="https://www.youtube.com/embed/RqWmfspkztM?vq=hd720&rel=0&autoplay=1&mute=1&playsinline=1&loop=1&playlist=RqWmfspkztM"
