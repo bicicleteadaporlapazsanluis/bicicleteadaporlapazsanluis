@@ -85,3 +85,48 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Estilos personalizados para el slider de sponsors */
+.sponsors-swiper .swiper-button-next,
+.sponsors-swiper .swiper-button-prev {
+  color: hsl(var(--primary));
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.9);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.sponsors-swiper .swiper-button-next:hover,
+.sponsors-swiper .swiper-button-prev:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: scale(1.1);
+  color: hsl(var(--secondary));
+}
+
+.sponsors-swiper .swiper-button-next::after,
+.sponsors-swiper .swiper-button-prev::after {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.sponsors-swiper .swiper-pagination-bullet {
+  background: hsl(var(--muted-foreground));
+  opacity: 0.5;
+  width: 12px;
+  height: 12px;
+  transition: all 0.3s ease;
+}
+
+.sponsors-swiper .swiper-pagination-bullet-active {
+  background: hsl(var(--primary));
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+.sponsors-swiper .swiper-pagination-bullet:hover {
+  opacity: 0.8;
+  transform: scale(1.1);
+}
