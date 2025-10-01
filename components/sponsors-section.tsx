@@ -82,6 +82,16 @@ export function SponsorsSection() {
       logo: "/logos/alvoleo.png",
       description: "Patrocinador",
     },
+    {
+      name: "Agua del Rock",
+      logo: "/logos/aguadelrock.png",
+      description: "Patrocinador",
+    },
+    {
+      name: "Hielo del Rock",
+      logo: "/logos/hielodelrock.png",
+      description: "Patrocinador",
+    },
   ];
 
   return (
@@ -93,7 +103,7 @@ export function SponsorsSection() {
             <p className="text-lg text-muted-foreground">Organizaciones que hacen posible este evento</p>
           </div>
 
-          <div className="px-8">
+          <div className="">
             <Swiper
               modules={[Navigation, Pagination, Autoplay]}
               // navigation={true}
@@ -107,16 +117,16 @@ export function SponsorsSection() {
                 pauseOnMouseEnter: false,
               }}
               loop={true}
-              spaceBetween={32}
-              slidesPerView={1}
+              spaceBetween={4}
+              slidesPerView={2}
               breakpoints={{
                 640: {
                   slidesPerView: 2,
-                  spaceBetween: 24,
+                  spaceBetween: 10,
                 },
                 768: {
                   slidesPerView: 3,
-                  spaceBetween: 28,
+                  spaceBetween: 12,
                 },
                 1024: {
                   slidesPerView: 4,
