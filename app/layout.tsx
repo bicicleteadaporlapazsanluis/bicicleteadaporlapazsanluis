@@ -15,9 +15,11 @@ export const metadata: Metadata = {
     "Sumate a la Bicicleteada por la Paz el domingo 5 de octubre en San Luis. Una iniciativa global que busca conectar pueblos a través de la paz y el ciclismo.",
   keywords: "bicicleteada, paz, San Luis, Argentina, ciclismo, evento, comunidad",
   icons: {
-    icon: { url: "/favicon.svg", type: "image/svg+xml" },
-    apple: { url: "/favicon.svg", type: "image/svg+xml" }
+    icon: ["/favicon.ico?v=4"],
+    shortcut: ["/favicon-16x16.png?v=4"],
+    apple: ["/apple-touch-icon.png?v=4"],
   },
+  manifest: "/manifest.json",
   openGraph: {
     title: "Bicicleteada por la Paz - San Luis",
     description: "Domingo 5 de octubre - 9:00 hs. Sumate a esta iniciativa de paz y comunidad.",

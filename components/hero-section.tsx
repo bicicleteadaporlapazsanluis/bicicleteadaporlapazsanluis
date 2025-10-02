@@ -248,7 +248,7 @@ export function HeroSection() {
                       className="flex-shrink-0"
                     >
                       <Image
-                        src="/favicon.svg"
+                        src="/ciclista.svg"
                         alt="Bicicleta"
                         width={20}
                         height={20}
