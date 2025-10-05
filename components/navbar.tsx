@@ -58,8 +58,6 @@ export function Navbar() {
     { id: "acerca", label: "Acerca" },
     { id: "recorrido", label: "Recorrido" },
     { id: "galeria", label: "Galería" },
-    { id: "sorteo", label: "Sorteo" },
-    { id: "ganadores", label: "Ganadores" },
   ];
 
   return (
