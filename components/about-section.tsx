@@ -6,20 +6,20 @@ export function AboutSection() {
     <section id="acerca" className="py-20">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-8">¿De qué se trata?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-8">¿De qué se trató?</h2>
 
           <Card className="mb-12 border-border bg-card/80 backdrop-blur-sm">
             <CardContent className="p-6 md:p-8">
               <p className="text-base md:text-lg leading-relaxed text-foreground">
-                El domingo 5 de octubre a partir de las 9:00, las y los aficionados a pedalear podrán participar de la
-                Bicicleteada por la Paz, una actividad que se encuadra dentro de{" "}
+                El domingo 5 de octubre a partir de las 9:00, las y los aficionados a pedalear participaron de la
+                Bicicleteada por la Paz, una actividad que se enmarcó dentro de{" "}
                 <span className="font-semibold text-primary">"La Ruta por la Paz"</span>, una iniciativa global que
-                busca conectar a todos los pueblos del mundo a través de la paz, para alcanzar una mayor interrelación y
+                buscó conectar a todos los pueblos del mundo a través de la paz, para alcanzar una mayor interrelación y
                 bienestar mutuo entre naciones y culturas.
               </p>
-              <div className="mt-6 p-4 bg-primary rounded-lg border border-primary">
-                <p className="text-primary-foreground font-semibold text-base md:text-lg">
-                  ¡Abierto y gratuito a todo público!
+              <div className="mt-6 p-4 bg-green-100 rounded-lg border border-green-200">
+                <p className="text-green-800 font-semibold text-base md:text-lg">
+                  ¡Gracias a todos los que participaron de este evento gratuito y abierto!
                 </p>
               </div>
             </CardContent>
@@ -32,7 +32,7 @@ export function AboutSection() {
               </div>
               <h3 className="text-lg md:text-xl font-semibold mb-2">Paz</h3>
               <p className="text-sm md:text-base text-muted-foreground">
-                Promovemos la paz y la armonía entre las comunidades
+                Promovimos la paz y la armonía entre las comunidades
               </p>
             </div>
 
@@ -51,7 +51,7 @@ export function AboutSection() {
                 <Users className="w-8 h-8 text-primary" />
               </div>
               <h3 className="text-lg md:text-xl font-semibold mb-2">Comunidad</h3>
-              <p className="text-sm md:text-base text-muted-foreground">Fortalecemos los lazos entre las personas</p>
+              <p className="text-sm md:text-base text-muted-foreground">Fortalecimos los lazos entre las personas</p>
             </div>
           </div>
         </div>

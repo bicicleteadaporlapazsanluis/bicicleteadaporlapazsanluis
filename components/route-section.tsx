@@ -18,8 +18,8 @@ export function RouteSection() {
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-8 lg:mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-primary mb-4">Recorrido</h2>
-            <p className="text-base lg:text-lg text-muted-foreground">Conocé el trayecto que recorreremos juntos por San Luis</p>
+            <h2 className="text-3xl lg:text-4xl font-bold text-primary mb-4">Recorrido Realizado</h2>
+            <p className="text-base lg:text-lg text-muted-foreground">Este fue el hermoso trayecto que recorrimos juntos por San Luis</p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
@@ -56,17 +56,17 @@ export function RouteSection() {
                   ))}
                 </div>
 
-                <div className="mt-6 p-4 bg-green-50 rounded-lg border border-green-200">
-                  <div className="flex items-center gap-2 text-green-700 font-semibold mb-2">
+                <div className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
+                  <div className="flex items-center gap-2 text-blue-700 font-semibold mb-2">
                     <Route className="w-5 h-5" />
-                    Información del Recorrido
+                    Información del Recorrido Completado
                   </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-green-600">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-blue-600">
                     <div>
-                      <strong>Distancia:</strong> ~8 km
+                      <strong>Distancia recorrida:</strong> ~8 km
                     </div>
                     <div>
-                      <strong>Duración estimada:</strong> 45-60 min
+                      <strong>Duración:</strong> 45-60 min
                     </div>
                     <div>
                       <strong>Dificultad:</strong> Fácil

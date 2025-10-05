@@ -6,9 +6,9 @@ export function VideoSection() {
   return (
     <section id="video" className="py-16 bg-white">
       <div className="container mx-auto px-4 max-w-5xl">
-        <h2 className="text-3xl font-bold text-center mb-6">Edición 2024</h2>
+        <h2 className="text-3xl font-bold text-center mb-6">Ediciones Anteriores</h2>
         <p className="text-center text-gray-600 mb-8">
-          Reviví los mejores momentos de la Bicicleteada por la Paz 2024.
+          Recordamos los hermosos momentos de la Bicicleteada por la Paz 2024.
         </p>
         <div className="relative w-full" style={{ paddingTop: "56.25%" }}>
           <iframe

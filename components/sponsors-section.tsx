@@ -99,8 +99,8 @@ export function SponsorsSection() {
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-primary mb-4">Invitan</h2>
-            <p className="text-lg text-muted-foreground">Organizaciones que hacen posible este evento</p>
+            <h2 className="text-4xl font-bold text-primary mb-4">Invitaron</h2>
+            <p className="text-lg text-muted-foreground">Organizaciones que hicieron posible este evento</p>
           </div>
 
           <div className="">
