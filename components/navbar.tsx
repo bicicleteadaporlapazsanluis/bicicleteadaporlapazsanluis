@@ -11,7 +11,7 @@ export function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["inicio", "acerca", "recorrido", "galeria", "sorteo", "ganadores"];
+      const sections = ["inicio", "acerca", "recorrido", "galeria"];
       const scrollPosition = window.scrollY + 100;
 
       // Cerrar menú móvil al hacer scroll
