@@ -157,117 +157,44 @@ export function RaffleSection() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-2 mb-4">
-            <Gift className="w-8 h-8 text-primary animate-pulse" />
-            <h2 className="text-3xl md:text-4xl font-bold text-primary">Gran Sorteo</h2>
-            <Gift className="w-8 h-8 text-primary animate-pulse" />
+            <Trophy className="w-8 h-8 text-yellow-500 animate-pulse" />
+            <h2 className="text-3xl md:text-4xl font-bold text-primary">Sorteo Realizado</h2>
+            <Trophy className="w-8 h-8 text-yellow-500 animate-pulse" />
           </div>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            ¡Todos los participantes inscriptos participan automáticamente del sorteo!
+            ¡El sorteo ya se realizó! Conocé a los ganadores más abajo.
           </p>
           <div className="mt-4 flex items-center justify-center gap-2 text-primary font-semibold">
             <Users className="w-5 h-5" />
-            <span>{totalParticipants} participantes inscriptos</span>
+            <span>{totalParticipants} personas participaron del evento</span>
           </div>
         </div>
 
-        {/* Rectángulo de premios */}
+        {/* Mensaje de evento terminado */}
         <div className="max-w-4xl mx-auto mb-12">
-          <Card className="bg-gradient-to-r from-yellow-50 to-orange-50 border-2 border-yellow-200 shadow-lg">
+          <Card className="bg-gradient-to-r from-green-50 to-blue-50 border-2 border-green-200 shadow-lg">
             <CardContent className="p-8 text-center">
               <div className="flex flex-col md:flex-row items-center justify-center mb-4">
-                <Gift className="w-12 h-12 text-yellow-600 mr-3" />
-                <h3 className="text-3xl md:text-4xl font-bold text-yellow-700">
-                  Grandes Premios
+                <Heart className="w-12 h-12 text-green-600 mr-3" />
+                <h3 className="text-3xl md:text-4xl font-bold text-green-700">
+                  ¡Evento Finalizado!
                 </h3>
               </div>
-              <p className="text-lg text-yellow-600 font-medium">
-                ¡Sorpresas increíbles esperan a todos los participantes!
+              <p className="text-lg text-green-600 font-medium mb-4">
+                Gracias a todos los que participaron de esta hermosa jornada por la paz.
               </p>
+              {/* <div className="text-center">
+                <Button 
+                  size="lg" 
+                  className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 text-lg font-semibold"
+                  onClick={() => document.getElementById("ganadores")?.scrollIntoView({ behavior: "smooth" })}
+                >
+                  <Trophy className="w-6 h-6 mr-3" />
+                  Ver Ganadores del Sorteo
+                </Button>
+              </div> */}
             </CardContent>
           </Card>
-        </div>
-
-        {/* Requisitos para participar */}
-        <div className="max-w-6xl mx-auto">
-          <h3 className="text-2xl md:text-3xl font-bold text-center mb-8 text-primary">
-            ¿Qué necesitas para participar?
-          </h3>
-          
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            <Card className="text-center hover:shadow-lg transition-all duration-300 border-green-200">
-              <CardContent className="p-6">
-                <div className="flex justify-center mb-4">
-                  <div className="p-2 rounded-full bg-green-300">
-                    <Image
-                      src="/cascobici.png"
-                      alt="Casco de bicicleta"
-                      width={50}
-                      height={50}
-                      className="w-12 h-12"
-                    />
-                  </div>
-                </div>
-                <h4 className="font-semibold text-lg mb-2">Casco</h4>
-                <p className="text-muted-foreground text-sm">
-                  Protección obligatoria para tu seguridad
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center hover:shadow-lg transition-all duration-300 border-blue-200">
-              <CardContent className="p-6">
-                <div className="flex justify-center mb-4">
-                  <div className="p-4 rounded-full bg-blue-100">
-                    <Shirt className="w-8 h-8 text-blue-600" />
-                  </div>
-                </div>
-                <h4 className="font-semibold text-lg mb-2">Ropa Cómoda</h4>
-                <p className="text-muted-foreground text-sm">
-                  Vestimenta deportiva para pedalear cómodamente
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center hover:shadow-lg transition-all duration-300 border-cyan-200">
-              <CardContent className="p-6">
-                <div className="flex justify-center mb-4">
-                  <div className="p-4 rounded-full bg-cyan-100">
-                    <Droplets className="w-8 h-8 text-cyan-600" />
-                  </div>
-                </div>
-                <h4 className="font-semibold text-lg mb-2">Botellita de Agua</h4>
-                <p className="text-muted-foreground text-sm">
-                  Hidratación recomendable durante el recorrido
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center hover:shadow-lg transition-all duration-300 border-red-200">
-              <CardContent className="p-6">
-                <div className="flex justify-center mb-4">
-                  <div className="p-4 rounded-full bg-red-100">
-                    <Heart className="w-8 h-8 text-red-600" />
-                  </div>
-                </div>
-                <h4 className="font-semibold text-lg mb-2">Muchas Ganas</h4>
-                <p className="text-muted-foreground text-sm">
-                  ¡Lo más importante! Ganas de participar y divertirse
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Botón de participación */}
-          <div className="text-center">
-            <Button 
-              size="lg" 
-              className="bg-slate-200 hover:bg-primary/90 text-black px-8 py-4 text-lg font-semibold"
-              onClick={handleParticipate}
-            >
-              <Gift className="w-6 h-6 mr-3" />
-              ¡Quiero Participar!
-            </Button>
-          </div>
         </div>
 
         {/* SECCIONES OCULTAS - Solo para administradores */}

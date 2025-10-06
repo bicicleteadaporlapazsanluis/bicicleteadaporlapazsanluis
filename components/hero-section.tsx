@@ -167,7 +167,7 @@ export function HeroSection() {
                   <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Infinity }}>
                     <Heart className="w-4 h-4" />
                   </motion.div>
-                  Evento por la Paz y la Convivencia
+                  Evento Realizado por la Paz y la Convivencia
                 </motion.div>
 
                 <div className="text-2xl sm:text-3xl md:text-4xl text-gray-800 mb-6 space-y-3">
@@ -231,7 +231,7 @@ export function HeroSection() {
                     {isLoading ? "..." : participantCount}
                   </motion.span>
                   <span className="text-base md:text-xl text-center sm:text-left">
-                    {participantCount === 1 ? "persona ya inscripta" : "personas ya inscriptas"}
+                    {participantCount === 1 ? "persona participó" : "personas participaron"}
                   </span>
                 </div>
               </motion.div>
@@ -240,22 +240,16 @@ export function HeroSection() {
                   <Button
                     size="lg"
                     className="text-lg md:text-xl px-8 md:px-12 py-6 md:py-8 bg-green-600 hover:bg-green-700 shadow-xl w-full sm:w-auto text-white font-semibold rounded-xl flex items-center justify-center gap-4"
-                    onClick={() => scrollToSection("inscripcion")}
+                    onClick={() => scrollToSection("ganadores")}
                   >
                     <motion.div
-                      animate={{ x: [0, 5, 0] }}
+                      animate={{ rotate: [0, 10, -10, 0] }}
                       transition={{ duration: 2, repeat: Infinity }}
                       className="flex-shrink-0"
                     >
-                      <Image
-                        src="/ciclista.svg"
-                        alt="Bicicleta"
-                        width={20}
-                        height={20}
-                        className="w-6 h-6 md:w-8 md:h-8 brightness-0 invert"
-                      />
+                      <Heart className="w-6 h-6 md:w-8 md:h-8 brightness-0 invert" />
                     </motion.div>
-                    <span>¡Inscribite Gratis!</span>
+                    <span>¡Gracias por Participar!</span>
                   </Button>
                 </motion.div>
               </div>

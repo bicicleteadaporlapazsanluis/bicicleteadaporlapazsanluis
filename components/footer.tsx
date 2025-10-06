@@ -7,12 +7,10 @@ export function Footer() {
         <div className="text-center">
           <div className="mb-12">
             <h3 className="text-2xl md:text-3xl font-bold mb-6 flex items-center justify-center gap-3">
-              <Heart className="w-6 h-6 md:w-8 md:h-8 text-red-400 animate-pulse" />
-              ¡Prepará tu bici, te esperamos!
+              ¡Bicicleteada por la paz!
             </h3>
             <p className="text-base md:text-lg text-green-100 max-w-3xl mx-auto leading-relaxed">
-              Sumate a esta iniciativa de paz el domingo 5 de octubre a las 9:00 hs en el Salón Malvinas Argentinas.
-              Conectá con tu comunidad pedaleando por un mundo mejor.
+              Gracias por haberte sumado a esta hermosa iniciativa de paz. Juntos conectamos con nuestra comunidad pedaleando por un mundo mejor.
             </p>
           </div>
 
