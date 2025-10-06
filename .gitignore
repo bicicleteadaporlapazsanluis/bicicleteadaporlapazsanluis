@@ -11,6 +11,16 @@ supabase_setup.md
 # Ignore all scripts
 scripts/
 
+# Email system (local only - not for production)
+app/api/send-event-photos/
+app/api/test-email/
+app/send-emails/
+app/send-batches/
+app/api/send-batch/
+components/email-sender.tsx
+EMAIL_SYSTEM.md
+ANTI_SPAM_GUIDE.md
+
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
@@ -65,3 +75,9 @@ tests/
 # Documentation files (opcional, mantener solo los necesarios)
 # TESTING.md
 # DEPLOYMENT.md
+LOCAL_EMAIL_SYSTEM.md
+MASIVO_500_EMAILS.md
+PRE_ENVIO_CHECKLIST.md
+SISTEMA_LOTES.md
+app/api/get-batches/route.ts
+components/batch-email-sender.tsx

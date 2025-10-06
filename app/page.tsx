@@ -28,9 +28,6 @@ export default function Home() {
           <ImageSlider />
         </section>
         <VideoSection />
-        <section id="ganadores">
-          <WinnersSection />
-        </section>
         <SponsorsSection />
         <Footer />
       </main>
