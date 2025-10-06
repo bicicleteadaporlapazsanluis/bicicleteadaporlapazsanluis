@@ -1,14 +1,11 @@
-import { HeroSection } from "@/components/hero-section"
-import { AboutSection } from "@/components/about-section"
-import { RouteSection } from "@/components/route-section"
-import { GallerySection } from "@/components/gallery-section"
-import { RaffleSection } from "@/components/raffle-section"
-import { WinnersSection } from "@/components/winners-section"
-import { SponsorsSection } from "@/components/sponsors-section"
-import { Footer } from "@/components/footer"
-import { Navbar } from "@/components/navbar"
-import { ImageSlider } from "@/components/image-slider"
-import { VideoSection } from "@/components/video-section"
+import { HeroSection } from "@/components/hero-section";
+import { AboutSection } from "@/components/about-section";
+import { RouteSection } from "@/components/route-section";
+import { SponsorsSection } from "@/components/sponsors-section";
+import { Footer } from "@/components/footer";
+import { Navbar } from "@/components/navbar";
+import { ImageSlider } from "@/components/image-slider";
+import { VideoSection } from "@/components/video-section";
 
 export default function Home() {
   return (
@@ -27,10 +24,14 @@ export default function Home() {
         <section id="galeria">
           <ImageSlider />
         </section>
-        <VideoSection />
-        <SponsorsSection />
+        <section id="video">
+          <VideoSection />
+        </section>
+        <section id="sponsors">
+          <SponsorsSection />
+        </section>
         <Footer />
       </main>
     </>
-  )
+  );
 }
